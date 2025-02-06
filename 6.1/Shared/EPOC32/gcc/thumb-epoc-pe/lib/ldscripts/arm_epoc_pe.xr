@@ -1,5 +1,5 @@
 OUTPUT_FORMAT(epoc-pei-arm-little)
- SEARCH_DIR(/epoc32/gcc//lib);
+ SEARCH_DIR(/usr/local/er6//lib);
 ENTRY(_mainCRTStartup)
 SECTIONS
 {
