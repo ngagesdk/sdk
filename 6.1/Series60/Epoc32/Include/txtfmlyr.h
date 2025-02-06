@@ -12,7 +12,7 @@
 #include <txtfrmat.h>
 
 // forward declarations
-class CFormatStream;  
+class CFormatStream;
 class RReadStream;
 class RWriteStream;
 class TCharFormatX;
@@ -78,7 +78,7 @@ public:
 	// The based on link is NULL. Restores only one layer.
 	//
 	// Persistence
-	IMPORT_C virtual void InternalizeL(RReadStream& aStream,const CFormatLayer* aBase=NULL);	
+	IMPORT_C virtual void InternalizeL(RReadStream& aStream,const CFormatLayer* aBase=NULL);
 	IMPORT_C virtual void ExternalizeL(RWriteStream& aStream)const;
 	//
 	// Core methods
@@ -116,7 +116,7 @@ public:
 	IMPORT_C static CCharFormatLayer* NewL();
 	IMPORT_C static CCharFormatLayer* NewL(const TCharFormat& aFormat,const TCharFormatMask& aMask);
 	IMPORT_C static CCharFormatLayer* NewL(RReadStream& aStream);
-	IMPORT_C virtual void InternalizeL(RReadStream& aStream,const CFormatLayer* aBase=NULL);	
+	IMPORT_C virtual void InternalizeL(RReadStream& aStream,const CFormatLayer* aBase=NULL);
 	IMPORT_C virtual void ExternalizeL(RWriteStream& aStream)const;
 	IMPORT_C void SetL(const TCharFormat& aCharFormat,const TCharFormatMask& aMask);
 	IMPORT_C void SenseEffective(TCharFormat& aCharFormat)const;
@@ -133,9 +133,10 @@ public:
 	void SetL(const TCharFormatX& aCharFormat,const TCharFormatXMask& aMask);
 	void SenseEffective(TCharFormatX& aCharFormat)const;
 	void Sense(TCharFormatX& aCharFormat,TCharFormatXMask& aMask) const;
-	
-private:
+
 	CCharFormatLayer();
+
+private:
 	virtual CFormatLayer* RestoreNewL(RReadStream& aStream);
 	virtual void FillCharFormat(TCharFormatX& aCharFormat,TCharFormatXMask& aMask)const;
 	IMPORT_C virtual CFormatLayer* DoCloneL()const;

@@ -51,7 +51,7 @@ empty rectangle.
 const TUint KReplacementCharacter = 0xF6DB;
 
 /**
- * KFillCharacterOffset is a significant offset that is set when a character within a code section is 
+ * KFillCharacterOffset is a significant offset that is set when a character within a code section is
  * not in the font. This means that for these fill characters nothing is stored within the binary
  * data part of the code section.
  */
@@ -144,13 +144,14 @@ class TOpenFontGlyphData
 	inline void SetMetrics(TOpenFontCharMetrics& aMetrics);
 	inline void SetGlyphIndex(TInt aGlyphIndex);
 
+	~TOpenFontGlyphData();
+
 	private:
 	/*
 	Prevent construction and destruction by normal means; the object resides on a specified heap.
 	and is created by New and deleted by RHeap::Free.
 	*/
 	TOpenFontGlyphData();
-	~TOpenFontGlyphData();
 
 	TInt iBitmapBufferSize;					// size of the buffer in bytes
 	TInt iBytesNeeded;						// bytes needed for the bitmap
@@ -401,7 +402,7 @@ class COpenFontFile: public CBase
 	virtual void GetNearestFontInPixelsL(RHeap* aHeap,COpenFontSessionCacheList* aSessionCacheList,
 										 const TOpenFontSpec& aDesiredFontSpec,TInt aPixelWidth,TInt aPixelHeight,
 										 COpenFont*& aFont,TOpenFontSpec& aActualFontSpec) = 0;
-	virtual TBool HasUnicodeCharacterL(TInt aFaceIndex,TInt aCode) const = 0; 
+	virtual TBool HasUnicodeCharacterL(TInt aFaceIndex,TInt aCode) const = 0;
 	IMPORT_C virtual void Reserved(); // unused; for future expansion
 
 	// exported functions

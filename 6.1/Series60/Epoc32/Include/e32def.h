@@ -17,9 +17,9 @@
 				RDebug::Print(_L("Profile bin %d:  Calls: %d, Clock ticks: %d\n" ),i,result[i].iCount,result[i].iTime);  \
 			}
 #else // __PROFILING__
-#define __PROFILE_START(aBin) 
-#define __PROFILE_END(aBin)   
-#define __PROFILE_RESET(aNumberOfBins) 
+#define __PROFILE_START(aBin)
+#define __PROFILE_END(aBin)
+#define __PROFILE_RESET(aNumberOfBins)
 #define __PROFILE_DISPLAY(aNumberOfBins)
 #endif
 //
@@ -80,7 +80,9 @@
 #define FOREVER for(;;)
 #define TRUE 1
 #define FALSE 0
+#ifndef NULL
 #define NULL 0
+#endif
 #define VA_START(ap,pn) ((ap)[0]=(TInt8 *)&pn+((sizeof(pn)+sizeof(TInt)-1)&~(sizeof(TInt)-1)),(void)0)
 #define VA_ARG(ap,type) ((ap)[0]+=((sizeof(type)+sizeof(TInt)-1)&~(sizeof(TInt)-1)),(*(type *)((ap)[0]-((sizeof(type)+sizeof(TInt)-1)&~(sizeof(TInt)-1)))))
 #define VA_END(ap) ((ap)[0]=0,(void)0)
@@ -157,7 +159,7 @@ typedef TInt8 *VA_LIST[1];
 #define __RHEAP_SETFAIL(aHeap,aType,aValue) (aHeap)->__DbgSetAllocFail(aType,aValue)
 #define __RHEAP_RESET(aHeap) (aHeap)->__DbgSetAllocFail(RHeap::ENone,1)
 //
-#if defined (__WINS__) 
+#if defined (__WINS__)
 #define __DEBUGGER() {if (User::JustInTime()) _asm int 3}
 #else
 #define __DEBUGGER()

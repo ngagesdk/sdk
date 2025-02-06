@@ -39,12 +39,12 @@ class TViewYPosQualifier
 friend class CTextLayout;
 friend class CTextView;
 public:
-	
+
 	/**
 	 *
 	 * Which part of a line (top, baseline or bottom) should appear at a
 	 * vertical pixel position.
-	 * @since 
+	 * @since
 	 */
 
 	enum TPartOfLine
@@ -54,19 +54,19 @@ public:
 		/** The baseline is placed at the specified vertical point. */
 		EFViewBaseLine = 0,
 		/** The bottom pixel is placed at the specified vertical point. */
-		EFViewBottomOfLine = 2	
+		EFViewBottomOfLine = 2
 		};
-	
+
 	/**
 	 *
 	 * Whether the top line in the view should be fully visible.
-	 * @since 
+	 * @since
 	 */
 
 	enum TFullyVisible
 		{
 		/** Force a partially visible top line to be fully visible. */
-		EFViewForceLineFullyVisible = ETrue,		
+		EFViewForceLineFullyVisible = ETrue,
 		/** Do not force a partially visible top line to be fully visible. */
 		EFViewDontForceLineFullyVisible = EFalse
 		};
@@ -233,7 +233,7 @@ class MFormCustomDraw
 	{
 	public:
 
-	
+
 	/**
 	 *
 	 * Contains the drawing parameters used by all custom draw functions.
@@ -253,8 +253,8 @@ class MFormCustomDraw
 		const TRect& iDrawRect;
 		};
 
-	
-	
+
+
 	/**
 	 *
 	 * Contains the line metrics.
@@ -272,7 +272,7 @@ class MFormCustomDraw
 		const TRect& iInnerRect;
 		TInt iBaseline;
 		};
-	
+
 	IMPORT_C virtual void DrawBackground(const TParam& aParam,const TRgb& aBackground,TRect& aDrawn) const;
 	IMPORT_C virtual void DrawLineGraphics(const TParam& aParam,const TLineInfo& aLineInfo) const;
 	IMPORT_C virtual void DrawText(const TParam& aParam,const TLineInfo& aLineInfo,const TCharFormat& aFormat,
@@ -287,9 +287,9 @@ class MFormCustomDraw
 @since 6.2
 The MFormCustomWrap interface.
 
-This interface class allows you to implement custom line breaking. 
-All you have to do is create an object of a class derived from MFormCustomWrap 
-and call CTextLayout::SetCustomWrap, passing a pointer to the object. 
+This interface class allows you to implement custom line breaking.
+All you have to do is create an object of a class derived from MFormCustomWrap
+and call CTextLayout::SetCustomWrap, passing a pointer to the object.
 
 */
 class MFormCustomWrap
@@ -302,7 +302,7 @@ public:
 	IMPORT_C virtual TBool IsHangingCharacter(TUint aChar) const;
 private:
 	IMPORT_C virtual void MFormCustomWrap_Reserved_1();
-	IMPORT_C virtual void MFormCustomWrap_Reserved_2();	
+	IMPORT_C virtual void MFormCustomWrap_Reserved_2();
 	};
 
 /**
@@ -346,15 +346,15 @@ class TLayDocTextSource: public MTmSource
 	void DrawText(CGraphicsContext& aGc,const TPoint& aTextLayoutTopLeft,const TRect& aRect,
 				  const TTmLineInfo& aLineInfo,const TTmCharFormat& aFormat,
 				  const TDesC& aText,const TPoint& aTextOrigin,TInt aExtraPixels) const;
-	
+
 	// overrides for the MTmSource virtual functions which implements the MFormCustomWrap
-	// if iCustomWrap is set. 
+	// if iCustomWrap is set.
 	TBool LineBreakPossible(TUint aPrevClass,TUint aNextClass,TBool aHaveSpaces) const;
 	TUint LineBreakClass(TUint aCode,TUint& aRangeStart,TUint& aRangeEnd) const;
 	TBool GetLineBreakInContext(const TDesC& aText,TInt aMinBreakPos,TInt aMaxBreakPos,
 												 TBool aForwards,TInt& aBreakPos) const;
 	TBool IsHangingCharacter(TUint aChar) const;
-	
+
 	// other functions
 	TBool CanMap() const;
 
@@ -381,8 +381,8 @@ class TLayDocTextSource: public MTmSource
 	TNonPrintingCharVisibility iNonPrintingCharVisibility;
 	const MFormParam* iFormParam;				// if non-null, points to the object that supplies system colours
 	const MFormCustomDraw* iCustomDraw;			// if non-null, points to custom drawing routines
-	const MFormCustomWrap* iCustomWrap;			// if non-null, points to custom wrapping routines 
- 
+	const MFormCustomWrap* iCustomWrap;			// if non-null, points to custom wrapping routines
+
 	};
 
 /**
@@ -435,29 +435,29 @@ and pagination systems. These are identified by the text ‘not generally useful’.
 class CTextLayout: public CBase
 	{
 public:
-	
+
 	/**
 	 *
 	 * Flags used by <code>CTextLayout::SetViewL()</code>.
-	 * @since 
+	 * @since
 	 */
 
 	enum TDiscard
 		{
 		/** Discard all the formatting. */
-		EFViewDiscardAllFormat = TRUE,	
+		EFViewDiscardAllFormat = TRUE,
 		/** Do not discard formatting until it is known that it is not needed. */
-		EFViewDontDiscardFormat = FALSE	
+		EFViewDontDiscardFormat = FALSE
 		};
-	
+
 	/**
 	 *
 	 * Indicates whether blank space should scroll.
-	 
+
 	 *
 	 * Used by several <code>CTextView</code> and <code>CTextLayout</code>
 	 * scrolling functions.
-	 * * @since 
+	 * * @since
 	 */
 
 	enum TAllowDisallow
@@ -467,9 +467,9 @@ public:
 		/** Disallow blank space from scrolling. */
 		EFDisallowScrollingBlankSpace = FALSE
 		};
-	
 
-	
+
+
 
 	enum									// flags for HandleCharEditL
 		{
@@ -480,9 +480,9 @@ public:
 		/** Delete single character to the left. */
 		EFLeftDelete,
 		/** Delete single character to the right. */
-		EFRightDelete				
+		EFRightDelete
 		};
-	
+
 	enum
 		{
 		/** A value greater than any possible display height indicates that the
@@ -502,14 +502,14 @@ public:
 		/** Wrapping on, unless <code>CParaFormat::iWrap</code> is false. */
 		EFParagraphsWrappedByDefault = FALSE
 		};
-	
+
 	/**
 	 *
 	 * Amount to format.
-	 
+
 	 *
 	 * Used by <code>CTextLayout::SetAmountToFormat()</code>.
-	 * * @since 
+	 * * @since
 	 */
 
 	enum TAmountFormatted
@@ -519,11 +519,11 @@ public:
 		/** Format the visible band only. */
 		EFFormatBand = TRUE,
 		};
-	
+
 	/**
 	 *
 	 * Formatting information.
-	 * @since 
+	 * @since
 	 */
 
 	enum TCurrentFormat
@@ -689,7 +689,7 @@ public:
 	IMPORT_C void ExtendFormattingToCoverYL(TInt aYPos);
 	IMPORT_C void ExtendFormattingToCoverPosL(TInt aDocPos);
 
-	
+
 #ifdef _DEBUG
 	TBool __DbgIsFormattingUpToDate();
 #endif
@@ -714,8 +714,9 @@ public:
 		};
 	static void Panic(TPanicNumber aNumber);
 
-private:
 	IMPORT_C CTextLayout();
+
+private:
  	IMPORT_C void ConstructL(MLayDoc *aDoc,TInt aWrapWidth);
 	CTextLayout(const CTextLayout&); // unimplemented
 	void operator=(const CTextLayout&); // unimplemented
@@ -766,11 +767,11 @@ private:
 class TCursorPosition
 	{
 public:
-	
+
 	/**
 	 *
 	 * Direction of cursor movement.
-	 * @since 
+	 * @since
 	 */
 
 	enum TMovementType
@@ -920,7 +921,7 @@ inline TViewYPosQualifier::TViewYPosQualifier():
  * zero.
  *
  */
-	
+
 inline TViewRectChanges::TViewRectChanges():
 	iScrollAtTop(0),
 	iScrollAtBottom(0)
@@ -970,7 +971,7 @@ inline void TCursorSelection::SetSelection(TInt aCursorPos,TInt aAnchorPos)
  *            The lesser of the cursor and anchor positions.
  */
 
-inline TInt TCursorSelection::LowerPos() const 
+inline TInt TCursorSelection::LowerPos() const
 	{
 	return Min(iCursorPos,iAnchorPos);
 	}
