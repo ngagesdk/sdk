@@ -1,12 +1,12 @@
 /* TYPES.H
- * 
+ *
  * Copyright (c) 1997-1999 Symbian Ltd.  All rights reserved.
  */
 
 #ifndef _SYS_TYPES_H
 #define _SYS_TYPES_H
 
-# include <stddef.h>	
+# include <stddef.h>
 # include <machine/types.h>
 
 # ifndef	_POSIX_SOURCE
@@ -20,6 +20,7 @@ typedef	unsigned int	u_int;
 typedef	unsigned long	u_long;
 typedef	unsigned short	ushort;		/* System V compatibility */
 typedef	unsigned int	uint;		/* System V compatibility */
+typedef long ssize_t;
 # endif	/*!_POSIX_SOURCE */
 
 #ifndef __time_t_defined
