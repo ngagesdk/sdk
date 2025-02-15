@@ -43,6 +43,12 @@
 /* Maximum integer value of the exponent for a double */
 #define DBL_MAX_EXP     1024
 
+/* Maximum integer value of the exponent for a double in base 10 */
+#define DBL_MAX_10_EXP   308
+
+/* Minimum integer value of the exponent for a double */
+#define LDBL_MAX_10_EXP  308
+
 /* Number of base-FLT_RADIX digits in the significand of a long double */
 #define LDBL_MANT_DIG   53
 
