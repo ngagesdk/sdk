@@ -65,10 +65,10 @@ IMPORT_C int	strcasecmp	(const char *, const char *);
 IMPORT_C char*	strdup		(const char *);
 IMPORT_C wchar_t*	wcsdup		(const wchar_t *);
 IMPORT_C int	strncasecmp	(const char *, const char *, size_t);
-IMPORT_C char 	*rindex		(const char *, int);
-IMPORT_C char 	*index		(const char *, int);
 
 #ifndef _STRICT_ANSI
+IMPORT_C char 	*rindex		(const char *, int);
+IMPORT_C char 	*index		(const char *, int);
 int	 bcmp		(const char *, const char *, size_t);
 void	 bcopy		(const char *src, char *dst, size_t);
 void	 bzero		(char *, size_t);
